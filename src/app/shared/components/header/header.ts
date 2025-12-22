@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
     @HostListener('window:resize', ['$event'])
     onResize(event: Event): void {
-        this.checkScreenWidth();
+        this.isMobileView = this.checkScreenWidth();
     }
 
     checkScreenWidth(): boolean {
