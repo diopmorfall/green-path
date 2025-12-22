@@ -45,7 +45,7 @@
         </nav>
         <div *ngIf="isMobileView">
             <button (click)="toggleMobileMenu()" class="relative h-5 w-5 md:h-6 md:w-6 bg-transparent p-0">
-                <img src='../../../../assets/icons/{{ isMobileMenuOpen ? "close-icon" : "hamburger-menu-icon" }}.svg' />
+                <img src="assets/icons/{{ isMobileMenuOpen ? 'close-icon' : 'hamburger-menu-icon' }}.svg" alt="Menu toggle" />
             </button>
         </div>
     </div>
