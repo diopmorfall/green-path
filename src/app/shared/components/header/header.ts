@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
     toggleMobileMenu(): void {
         if (this.isMobileView) {
-        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+            this.isMobileMenuOpen = !this.isMobileMenuOpen;
         }
     }
 }
