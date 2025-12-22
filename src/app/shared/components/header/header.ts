@@ -1,15 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  imports: [],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+    selector: 'app-header',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './header.html',
+    styleUrl: './header.css',
 })
-export class HeaderComponent {
-  isMobileMenuOpen = false;
+export class HeaderComponent implements OnInit {
+    isMobileMenuOpen: boolean = false;
+    isMobileView: boolean = this.checkScreenWidth();
+    private readonly desktopBreakpoint = 1024;
 
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
+    ngOnInit() {
+        this.isMobileView = this.checkScreenWidth();
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: Event): void {
+        this.checkScreenWidth();
+    }
+
+    checkScreenWidth(): boolean {
+        return window.innerWidth < this.desktopBreakpoint;
+    }
+
+    toggleMobileMenu(): void {
+        if (this.isMobileView) {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        }
+    }
 }
