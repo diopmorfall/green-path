@@ -28,7 +28,7 @@
                 }"
                 class="flex items-center"
             >
-                <button [ngClass]="{
+                <button type="button" [ngClass]="{
                         'mb-5 w-full': isMobileView,
                         'mr-5': !isMobileView
                     }"
@@ -36,7 +36,7 @@
                 >
                     Login
                 </button>
-                <button [ngClass]="{'w-full': isMobileView}"
+                <button type="button" [ngClass]="{'w-full': isMobileView}"
                     class="header-button bg-green-500 text-white hover:border-green-600"
                 >
                     Get started
@@ -44,9 +44,11 @@
             </div>
         </nav>
         <div *ngIf="isMobileView">
-            <button (click)="toggleMobileMenu()" class="relative h-5 w-5 md:h-6 md:w-6 bg-transparent p-0">
+            <button (click)="toggleMobileMenu()" 
+                    [attr.aria-expanded]="isMobileMenuOpen"
+                    aria-label="Toggle navigation menu"
+                    class="relative h-5 w-5 md:h-6 md:w-6 bg-transparent p-0">
                 <img src="assets/icons/{{ isMobileMenuOpen ? 'close-icon' : 'hamburger-menu-icon' }}.svg" alt="Menu toggle" />
-            </button>
-        </div>
+            </button>        </div>
     </div>
 </header>

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './landing-page.html',
-    styleUrl: './landing-page.css',
+    styleUrls: ['./landing-page.css']
 })
 export class LandingPage {
 

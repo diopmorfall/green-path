@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './header.html',
-    styleUrl: './header.css',
+    styleUrls: ['./header.css'],
 })
 export class HeaderComponent implements OnInit {
     isMobileMenuOpen: boolean = false;
-    isMobileView: boolean = this.checkScreenWidth();
+    isMobileView: boolean = false;
     private readonly desktopBreakpoint = 1024;
 
     ngOnInit() {
