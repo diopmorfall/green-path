@@ -9,7 +9,8 @@
         Measure, reduce and manage the emissions of your company. Gain ESG certifications and make sustainability your competitive edge.
     </p>
     <div class="w-full lg:h-[90px] flex flex-col items-center lg:flex-row lg:justify-evenly mt-12 lg:mt-24">
-        <button type="button" class="landing-button bg-green-500 text-white hover:border-green-600">
+        <button type="button" [routerLink]="['/signup']" routerLinkActive="router-link-active"
+            class="landing-button bg-green-500 text-white hover:border-green-600">
             Get started
         </button>
         <button type="button" class="landing-button bg-transparent text-green-500 hover:bg-green-500 hover:text-white">

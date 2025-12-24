@@ -2,7 +2,9 @@
     <div class="container h-full mx-auto flex items-center justify-between px-3 md:px-0">
         <div class="flex items-center">
             <!--todo <img src="assets/images/greenpath-logo.svg" alt="GreenPath Logo" class="mr-2 h-10"/> -->
-            <span class="text-2xl font-bold text-green-500">GreenPath</span>
+            <h2 class="text-2xl font-bold text-green-500"
+                [routerLink]="['/']" routerLinkActive="router-link-active"
+            >GreenPath</h2>
         </div>
         <nav [ngClass]="{
                 'hidden': isMobileView && !isMobileMenuOpen,
@@ -33,10 +35,13 @@
                         'mr-5': !isMobileView
                     }"
                     class="header-button bg-transparent text-green-500 hover:bg-green-500 hover:text-white"
+                    (click)="toggleMobileMenu()"
                 >
                     Login
                 </button>
-                <button type="button" [ngClass]="{'w-full': isMobileView}"
+                <button type="button" [routerLink]="['/signup']" routerLinkActive="router-link-active" 
+                    [ngClass]="{'w-full': isMobileView}"
+                    (click)="toggleMobileMenu()"
                     class="header-button bg-green-500 text-white hover:border-green-600"
                 >
                     Get started
