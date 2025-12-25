@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+.step-container{
+    @apply flex flex-col items-center;
+}
+
+.step-indicator{
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
+}
+
+.active-step{
+    @apply bg-green-500 text-white font-bold text-lg shadow-lg shadow-green-300;
+}
+
+.unreached-step{
+    @apply bg-gray-300 text-gray-500 font-bold text-lg;
+}
+
+.step-title{
+    @apply text-gray-700 text-sm mt-2;
+}
+
+.step-connector{
+    @apply grow h-1 bg-gray-300 mx-2;
+}
+
+.multistep-button{
+    @apply px-4 py-2 rounded-lg flex flex-row justify-between items-center;
+}
+
+.white-filter{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(3%) hue-rotate(275deg) brightness(105%) contrast(100%);
+}
