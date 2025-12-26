@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 .header-menu-item {
-    @apply font-medium text-gray-700 transition duration-300 hover:text-green-500 active:text-green-500;
+    @apply font-medium text-gray-700 transition duration-300 hover:text-green-500 active:text-green-500 cursor-pointer;
 }
 
 .header-button {
-    @apply rounded-md border-2 border-green-500 px-5 py-2 font-medium transition duration-300;
+    @apply rounded-md border-2 border-green-500 px-5 py-2 font-medium transition duration-300 cursor-pointer;
 }
