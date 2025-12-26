@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
     }
 })
 export class MultiStepForm implements OnInit {
-    @Input() formStepsLabels: String[] = [];
+    @Input() formStepsLabels: string[] = [];
     currentStep: number = 1;
 
     ngOnInit(): void {
