@@ -1,55 +1,38 @@
 <div class="w-full h-full flex flex-col items-center bg-white shadow-xl rounded-2xl">
-    <div class="flex justify-between items-center w-full p-4">
+    <div class="flex justify-around items-center w-full p-4">
         <!-- Step 1 -->
         <div class="step-container">
-            <div class="step-indicator active-step">
-                1
-            </div>
+            <div class="step-indicator active-step">1</div>
             <span class="step-title">Company</span>
         </div>
 
-        <!-- Line between Step 1 and 2 -->
-        <div class="step-connector"></div>
-
         <!-- Step 2 -->
         <div class="step-container">
-            <div class="step-indicator unreached-step">
-                2
-            </div>
+            <div class="step-indicator unreached-step">2</div>
             <span class="step-title">Contacts</span>
         </div>
 
-        <!-- Line between Step 2 and 3 -->
-        <div class="step-connector"></div>
-
         <!-- Step 3 -->
         <div class="step-container">
-            <div class="step-indicator unreached-step">
-                3
-            </div>
+            <div class="step-indicator unreached-step">3</div>
             <span class="step-title">Sustainability</span>
         </div>
 
-        <!-- Line between Step 3 and 4 -->
-        <div class="step-connector"></div>
-
         <!-- Step 4 -->
         <div class="step-container">
-            <div class="step-indicator unreached-step">
-                4
-            </div>
+            <div class="step-indicator unreached-step">4</div>
             <span class="step-title">Goals</span>
         </div>
     </div>
-
-    <div class="flex justify-between w-full p-4">
-        <button class="multistep-button border border-gray-300 text-gray-700">
-            <img src="assets/icons/left-icon.svg" class="w-3 h-3">
-            <span>Indietro</span>
+    
+    <div class="flex justify-between w-full p-4 md:px-8 lg:px-12">
+        <button class="hidden multistep-button border border-gray-300 text-gray-700">
+            <img src="assets/icons/left-icon.svg" class="multistep-button-icon">
+            <span>&nbsp;Indietro</span>
         </button>
         <button class="multistep-button bg-green-500 text-white">
-            <span>Avanti</span>
-            <img src="assets/icons/right-icon.svg" class="w-3 h-3 white-filter">
+            <span>Avanti&nbsp;</span>
+            <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
         </button>
     </div>
 </div>
