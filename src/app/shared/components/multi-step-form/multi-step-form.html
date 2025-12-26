@@ -1,30 +1,18 @@
 <div class="w-full h-full flex flex-col items-center bg-white shadow-xl rounded-2xl">
-    <div class="flex justify-around items-center w-full p-4">
-        <!-- Step 1 -->
-        <div class="step-container">
-            <div class="step-indicator active-step">1</div>
-            <span class="step-title">Company</span>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="step-container">
-            <div class="step-indicator unreached-step">2</div>
-            <span class="step-title">Contacts</span>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-container">
-            <div class="step-indicator unreached-step">3</div>
-            <span class="step-title">Sustainability</span>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="step-container">
-            <div class="step-indicator unreached-step">4</div>
-            <span class="step-title">Goals</span>
-        </div>
+    <div class="flex justify-around items-center w-full p-3">
+        @for (stepLabel of formStepsLabels; track $index) {
+            <div class="flex flex-col items-center">
+                <div class="step-indicator"
+                    [ngClass]="{'unreached-step': $index + 1 !== currentStep }"
+                    [class.active-step]="$index + 1 === currentStep"
+                >
+                    {{$index + 1}}
+                </div>
+                <span class="step-title" [ngClass]="{'hidden-step-title': $index + 1 !== currentStep}">{{stepLabel}}</span>
+            </div>
+        }
     </div>
-    
+
     <div class="flex justify-between w-full p-4 md:px-8 lg:px-12">
         <button class="hidden multistep-button border border-gray-300 text-gray-700">
             <img src="assets/icons/left-icon.svg" class="multistep-button-icon">

@@ -9,5 +9,5 @@ import { MultiStepForm } from '../../../shared/components/multi-step-form/multi-
     styleUrl: './sign-up.css',
 })
 export class SignUp {
-
+    signUpStepsLabels: String[] = ["Company", "Sustainability", "Goals", "Contacts"]
 }
