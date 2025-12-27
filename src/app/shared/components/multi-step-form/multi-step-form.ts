@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
     templateUrl: './multi-step-form.html',
     styleUrl: './multi-step-form.css',
     host: {
-        class: 'w-full md:w-3/4 block'
+        class: 'w-full md:w-3/4 lg:w-3/5 block'
     }
 })
 export class MultiStepForm implements OnInit {
