@@ -1,28 +1,42 @@
 <form [formGroup]="companyInfoFormGroup" (ngSubmit)="onSubmit()">
     <div>
         <label for="companyName">Company Name:</label>
-        <input id="companyName" type="text" formControlName="companyName">
+        <input id="companyName" type="text" formControlName="companyName" [attr.aria-invalid]="companyInfoFormGroup.get('companyName')?.invalid" aria-describedby="companyNameError">
         <div *ngIf="companyInfoFormGroup.get('companyName')?.invalid && companyInfoFormGroup.get('companyName')?.touched">
-            Company Name is required.
+            <span *ngIf="companyInfoFormGroup.get('companyName')?.errors?.['required']">Company Name is required.</span>
         </div>
     </div>
 
     <div>
         <label for="email">Email:</label>
-        <input id="email" type="email" formControlName="email">
-        <div *ngIf="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched">
+        <input 
+            id="email" 
+            type="email" 
+            formControlName="email"
+            [attr.aria-describedby]="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched ? 'emailError' : null"
+            [attr.aria-invalid]="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched"
+        >
+        <div id="emailError" *ngIf="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched">
             <span *ngIf="companyInfoFormGroup.get('email')?.errors?.['required']">Email is required.</span>
             <span *ngIf="companyInfoFormGroup.get('email')?.errors?.['email']">Enter a valid email.</span>
         </div>
     </div>
-
     <div>
         <label for="phone">Phone Number:</label>
-        <input id="phone" type="text" formControlName="phone">
-        <div *ngIf="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
+        <input 
+            id="phone" 
+            type="tel" 
+            formControlName="phone"
+            [attr.aria-describedby]="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched ? 'phoneError' : null"
+            [attr.aria-invalid]="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
+        <div id="phoneError" *ngIf="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
             <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['required']">Phone number is required.</span>
             <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['pattern']">Enter a 10-digit phone number.</span>
         </div>
+    </div>
+    <div *ngIf="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
+        <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['required']">Phone number is required.</span>
+        <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['pattern']">Enter a 10-digit phone number.</span>
     </div>
 
     <button type="submit" [disabled]="companyInfoFormGroup.invalid">Next</button>
