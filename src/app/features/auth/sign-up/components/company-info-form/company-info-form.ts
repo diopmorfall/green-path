@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
     styleUrl: './company-info-form.css',
 })
 export class CompanyInfoForm {
-    @Output() formCompleted = new EventEmitter<any>();
+    @Output() formCompleted = new EventEmitter<any>(); //! change this with a proper interface
 
     companyInfoFormGroup: FormGroup;
 

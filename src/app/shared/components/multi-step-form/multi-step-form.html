@@ -1,25 +1,36 @@
 <div class="w-full h-full flex flex-col items-center bg-white shadow-xl rounded-2xl">
-    <div class="flex justify-between items-center w-full p-3">
+    <div class="flex justify-between items-center w-full p-3 relative">
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-gray-200 z-0 mx-4"></div>
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-green-500 z-10 mx-4 transition-all duration-300 ease-in-out" [style.width.%]="progressPercentage"></div>
+
         @for (stepLabel of formStepsLabels; track $index) {
-            <div class="flex flex-col items-center flex-1">
+            <div class="flex flex-col items-center flex-1 z-20">
                 <div class="step-indicator"
-                    [ngClass]="{'unreached-step': $index + 1 !== currentStep }"
-                    [class.active-step]="$index + 1 === currentStep"
+                    [ngClass]="{'unreached-step': $index > currentStepIndex }"
+                    [class.active-step]="$index === currentStepIndex"
                 >
                     {{$index + 1}}
                 </div>
-                <span class="step-title" [ngClass]="{'hidden-step-title': $index + 1 !== currentStep}">{{stepLabel}}</span>
+                <span class="step-title" [ngClass]="{'hidden-step-title': $index !== currentStepIndex}">{{stepLabel}}</span>
             </div>
         }
     </div>
 
-    <div class="flex justify-between w-full p-4 md:px-8 lg:px-12">
-        <button class="hidden multistep-button border border-gray-300 text-gray-700">
+    <div class="w-full grow p-4 md:px-8 lg:px-12">
+        <ng-template #formStepHost></ng-template>
+    </div>
+
+    <div class="flex justify-between w-full p-4 md:px-8 lg:px-12 border-t border-gray-200">
+        <button class="multistep-button border border-gray-300 text-gray-700" (click)="prevStep()" [class.hidden]="currentStepIndex === 0">
             <img src="assets/icons/left-icon.svg" class="multistep-button-icon">
-            <span>&nbsp;Indietro</span>
+            <span>&nbsp;Back</span>
         </button>
-        <button class="multistep-button bg-green-500 text-white">
-            <span>Avanti&nbsp;</span>
+        <button class="multistep-button bg-green-500 text-white ml-auto" (click)="nextStep()" [class.hidden]="currentStepIndex === formStepsLabels.length - 1">
+            <span>Next&nbsp;</span>
+            <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
+        </button>
+        <button class="multistep-button bg-green-500 text-white ml-auto" (click)="formSubmitted.emit()" *ngIf="currentStepIndex === formStepsLabels.length - 1">
+            <span>Complete&nbsp;</span>
             <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
         </button>
     </div>
