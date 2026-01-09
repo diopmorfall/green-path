@@ -1,43 +1,46 @@
 <form [formGroup]="companyInfoFormGroup" (ngSubmit)="onSubmit()">
     <div>
         <label for="companyName">Company Name:</label>
-        <input id="companyName" type="text" formControlName="companyName" [attr.aria-invalid]="companyInfoFormGroup.get('companyName')?.invalid" aria-describedby="companyNameError">
-        <div *ngIf="companyInfoFormGroup.get('companyName')?.invalid && companyInfoFormGroup.get('companyName')?.touched">
-            <span *ngIf="companyInfoFormGroup.get('companyName')?.errors?.['required']">Company Name is required.</span>
-        </div>
+        <input
+            id="companyName"
+            type="text"
+            formControlName="companyName"
+            aria-describedby="companyNameError"
+            [attr.aria-invalid]="companyInfoFormGroup.get('companyName')?.invalid"
+            [ngClass]="{
+                'border-2 border-red-500': companyInfoFormGroup.get('companyName')?.invalid && companyInfoFormGroup.get('companyName')?.touched,
+            }"
+        >
+        @if (companyInfoFormGroup.get('companyName')?.invalid &&
+            companyInfoFormGroup.get('companyName')?.touched &&
+            companyInfoFormGroup.get('companyName')?.errors?.['required']
+        ) {            
+            <span class="font-light text-red-500">Company name is required.</span>
+        }
     </div>
 
     <div>
-        <label for="email">Email:</label>
+        <label for="vatNumber">VAT Number</label>
         <input 
-            id="email" 
-            type="email" 
-            formControlName="email"
-            [attr.aria-describedby]="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched ? 'emailError' : null"
-            [attr.aria-invalid]="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched"
+            id="vatNumber" 
+            type="text" 
+            formControlName="vatNumber"
+            aria-describedby="vatNumberError"
+            [attr.aria-invalid]="companyInfoFormGroup.get('vatNumber')?.invalid && companyInfoFormGroup.get('vatNumber')?.touched"
+            [ngClass]="{
+                'border-red-500': companyInfoFormGroup.get('companyName')?.invalid,
+            }"
+            class="border-2"
         >
-        <div id="emailError" *ngIf="companyInfoFormGroup.get('email')?.invalid && companyInfoFormGroup.get('email')?.touched">
-            <span *ngIf="companyInfoFormGroup.get('email')?.errors?.['required']">Email is required.</span>
-            <span *ngIf="companyInfoFormGroup.get('email')?.errors?.['email']">Enter a valid email.</span>
-        </div>
+        @if (companyInfoFormGroup.get('vatNumber')?.invalid &&
+            companyInfoFormGroup.get('vatNumber')?.touched &&
+            companyInfoFormGroup.get('vatNumber')?.errors?.['required']
+        ) {            
+            <span class="font-light text-red-500">VAT number is required.</span>
+        }
     </div>
-    <div>
-        <label for="phone">Phone Number:</label>
-        <input 
-            id="phone" 
-            type="tel" 
-            formControlName="phone"
-            [attr.aria-describedby]="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched ? 'phoneError' : null"
-            [attr.aria-invalid]="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
-        <div id="phoneError" *ngIf="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
-            <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['required']">Phone number is required.</span>
-            <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['pattern']">Enter a 10-digit phone number.</span>
-        </div>
-    </div>
-    <div *ngIf="companyInfoFormGroup.get('phone')?.invalid && companyInfoFormGroup.get('phone')?.touched">
-        <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['required']">Phone number is required.</span>
-        <span *ngIf="companyInfoFormGroup.get('phone')?.errors?.['pattern']">Enter a 10-digit phone number.</span>
-    </div>
+
+    <!--todo: two required selects for industry and company size -->
 
     <button type="submit" [disabled]="companyInfoFormGroup.invalid">Next</button>
 </form>

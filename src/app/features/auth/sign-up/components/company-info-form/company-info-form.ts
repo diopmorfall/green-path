@@ -16,9 +16,11 @@ export class CompanyInfoForm {
 
     constructor(private formBuilder: FormBuilder) {
         this.companyInfoFormGroup = this.formBuilder.group({
-            companyName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]] // Example: 10-digit phone number
+            companyName: ['', [Validators.required]],
+            //phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Example: 10-digit phone number
+            vatNumber: ['', [Validators.required]],
+            industry: ['', [Validators.required]],
+            companySize: ['', [Validators.required]]
         });
     }
 
