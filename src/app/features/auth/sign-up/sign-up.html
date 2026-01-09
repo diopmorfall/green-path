@@ -3,5 +3,10 @@
         <h2 class="font-bold text-xl mb-4 md:mb-8 md:text-2xl lg:text-3xl">Start your sustainability journey here</h2>
         <p class="font-light text-lg md:text-xl">Fill the form to get started</p>
     </div>
-    <app-multi-step-form [formStepsLabels]="signUpStepsLabels"></app-multi-step-form>
+    <app-multi-step-form
+        [formStepsLabels]="signUpStepsLabels"
+        [formStepsComponents]="signUpStepsComponents"
+        (stepData)="handleStepData($event.data, $event.stepIndex)"
+        (formSubmitted)="handleFormSubmit()">
+    </app-multi-step-form>
 </section>
