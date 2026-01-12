@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, Type, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-multi-step-form',
@@ -19,7 +20,8 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
     @Output() formSubmitted = new EventEmitter<void>();
 
     currentStepIndex: number = 0;
-
+    private formStepCompletedSubscription: Subscription | undefined;
+    
     @ViewChild('formStepHost', { static: false, read: ViewContainerRef }) formStepHost!: ViewContainerRef;
     
     ngAfterViewInit(): void {
@@ -28,6 +30,9 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
 
     ngOnDestroy(): void {
         this.formStepHost.clear();
+        if(this.formStepCompletedSubscription){
+            this.formStepCompletedSubscription.unsubscribe();
+        }
     }
 
     loadStepComponent(stepIndex: number): void {
@@ -37,10 +42,11 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
 
         // Assuming each step component has a 'formCompleted' output
         if (componentInstance.instance.formCompleted) {
-            componentInstance.instance.formCompleted.subscribe((data: any) => {
-                this.stepData.emit({ data: data, stepIndex: this.currentStepIndex });
-                this.nextStep();
-            });
+            this.formStepCompletedSubscription = componentInstance.instance.formCompleted.subscribe((data: any) =>
+                {
+                    this.stepData.emit({ data: data, stepIndex: this.currentStepIndex });
+                    this.nextStep();
+                });
         }
     }
 
