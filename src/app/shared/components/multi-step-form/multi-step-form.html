@@ -29,9 +29,11 @@
             <span>Next&nbsp;</span>
             <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
         </button>
-        <button class="multistep-button bg-green-500 text-white ml-auto" (click)="formSubmitted.emit()" *ngIf="currentStepIndex === formStepsLabels.length - 1">
-            <span>Complete&nbsp;</span>
-            <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
-        </button>
+        @if(currentStepIndex === formStepsLabels.length - 1) {
+            <button class="multistep-button bg-green-500 text-white ml-auto" (click)="formSubmitted.emit()">
+                <span>Complete&nbsp;</span>
+                <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
+            </button>
+        }
     </div>
 </div>
