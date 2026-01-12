@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, Type, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Type, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
         class: 'w-full md:w-3/4 lg:w-3/5 block'
     }
 })
-export class MultiStepForm implements OnInit, OnDestroy {
+export class MultiStepForm implements OnDestroy, AfterViewInit {
     @Input() formStepsLabels: string[] = [];
     @Input() formStepsComponents: Type<any>[] = [];
 
@@ -20,11 +20,9 @@ export class MultiStepForm implements OnInit, OnDestroy {
 
     currentStepIndex: number = 0;
 
-    @ViewChild('formStepHost', { static: true }) formStepHost!: ViewContainerRef;
-
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
-
-    ngOnInit(): void {
+    @ViewChild('formStepHost', { static: false, read: ViewContainerRef }) formStepHost!: ViewContainerRef;
+    
+    ngAfterViewInit(): void {
         this.loadStepComponent(this.currentStepIndex);
     }
 
@@ -35,9 +33,7 @@ export class MultiStepForm implements OnInit, OnDestroy {
     loadStepComponent(stepIndex: number): void {
         this.formStepHost.clear();
         const componentRef = this.formStepsComponents[stepIndex];
-        const factory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
-        const componentInstance = this.formStepHost.createComponent(factory);
-        //todo: fix this deprecated method
+        const componentInstance = this.formStepHost.createComponent(componentRef);
 
         // Assuming each step component has a 'formCompleted' output
         if (componentInstance.instance.formCompleted) {
