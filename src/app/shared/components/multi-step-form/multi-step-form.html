@@ -1,7 +1,5 @@
 <div class="w-full h-full flex flex-col items-center bg-white shadow-xl rounded-2xl">
     <div class="flex justify-between items-center w-full p-3 relative">
-        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-gray-200 z-0 mx-4"></div>
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-green-500 z-10 mx-4 transition-all duration-300 ease-in-out" [style.width.%]="progressPercentage"></div>
 
         @for (stepLabel of formStepsLabels; track $index) {
             <div class="flex flex-col items-center flex-1 z-20">

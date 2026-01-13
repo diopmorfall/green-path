@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, Type, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Type, ViewChild, ViewContainerRef, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 
@@ -67,10 +67,5 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
             this.currentStepIndex--;
             this.loadStepComponent(this.currentStepIndex);
         }
-    }
-
-    get progressPercentage(): number {
-        if (this.formStepsLabels.length === 0) return 0;
-        return ((this.currentStepIndex + 1) / this.formStepsLabels.length) * 100;
     }
 }
