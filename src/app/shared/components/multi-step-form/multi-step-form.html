@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center w-full p-3 relative">
 
         @for (stepLabel of formStepsLabels; track $index) {
-            <div class="flex flex-col items-center flex-1 z-20">
+            <div class="flex flex-col items-center flex-1">
                 <div class="step-indicator"
                     [ngClass]="{'unreached-step': $index > currentStepIndex }"
                     [class.active-step]="$index === currentStepIndex"
