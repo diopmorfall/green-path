@@ -36,6 +36,9 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
     }
 
     loadStepComponent(stepIndex: number): void {
+        if (this.formStepCompletedSubscription) {
+            this.formStepCompletedSubscription.unsubscribe();
+        }
         this.formStepHost.clear();
         const componentRef = this.formStepsComponents[stepIndex];
         const componentInstance = this.formStepHost.createComponent(componentRef);
