@@ -43,7 +43,7 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
         const componentRef = this.formStepsComponents[stepIndex];
         const componentInstance = this.formStepHost.createComponent(componentRef);
 
-        // Assuming each step component has a 'formCompleted' output
+        // Once each step component has a 'formCompleted' output
         if (componentInstance.instance.formCompleted) {
             this.formStepCompletedSubscription = componentInstance.instance.formCompleted.subscribe((data: any) =>
                 {

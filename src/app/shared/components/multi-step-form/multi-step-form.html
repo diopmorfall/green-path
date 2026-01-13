@@ -18,19 +18,27 @@
         <ng-template #formStepHost></ng-template>
     </div>
 
-    <div class="flex justify-between w-full p-4 md:px-8 lg:px-12 border-t border-gray-200">
-        <button class="multistep-button border border-gray-300 text-gray-700" (click)="prevStep()" [class.hidden]="currentStepIndex === 0">
+    <div class="flex justify-between w-full p-4 md:px-8 lg:px-12 border-t border-gray-200">    
+        <button class="multistep-button border border-gray-300 text-gray-700"
+            (click)="prevStep()"
+            [class.invisible]="currentStepIndex === 0"
+            [disabled]="currentStepIndex === 0"
+        >
             <img src="assets/icons/left-icon.svg" class="multistep-button-icon">
             <span>&nbsp;Back</span>
         </button>
-        <button class="multistep-button bg-green-500 text-white ml-auto" (click)="nextStep()" [class.hidden]="currentStepIndex === formStepsLabels.length - 1">
+        <button class="multistep-button bg-green-500 text-white ml-auto"
+            (click)="nextStep()"
+            [class.hidden]="currentStepIndex === formStepsLabels.length - 1"
+        >
             <span>Next&nbsp;</span>
             <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
         </button>
         @if(currentStepIndex === formStepsLabels.length - 1) {
-            <button class="multistep-button bg-green-500 text-white ml-auto" (click)="formSubmitted.emit()">
-                <span>Complete&nbsp;</span>
-                <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
+            <button class="multistep-button bg-green-500 text-white ml-auto"
+                (click)="formSubmitted.emit()"
+            >
+                <span>Complete</span>
             </button>
         }
     </div>
