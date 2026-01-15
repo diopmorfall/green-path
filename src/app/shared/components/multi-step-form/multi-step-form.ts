@@ -48,12 +48,12 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
             this.formStepCompletedSubscription = componentInstance.instance.formCompleted.subscribe((data: any) =>
                 {
                     this.stepData.emit({ data: data, stepIndex: this.currentStepIndex });
-                    this.nextStep();
+                    this.nextFormStep();
                 });
         }
     }
 
-    nextStep(): void {
+    nextFormStep(): void {
         if (this.currentStepIndex < this.formStepsComponents.length - 1) {
             this.currentStepIndex++;
             this.loadStepComponent(this.currentStepIndex);
@@ -62,7 +62,7 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
         }
     }
 
-    prevStep(): void {
+    prevFormStep(): void {
         if (this.currentStepIndex > 0) {
             this.currentStepIndex--;
             this.loadStepComponent(this.currentStepIndex);
