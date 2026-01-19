@@ -1,11 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'app-company-info-form',
     standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
+    imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule],
     templateUrl: './company-info-form.html',
     styleUrl: './company-info-form.css',
 })
@@ -17,7 +19,6 @@ export class CompanyInfoForm {
     constructor(private formBuilder: FormBuilder) {
         this.companyInfoFormGroup = this.formBuilder.group({
             companyName: ['', [Validators.required]],
-            //phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Example: 10-digit phone number
             vatNumber: ['', [Validators.required]],
             industry: ['', [Validators.required]],
             companySize: ['', [Validators.required]]

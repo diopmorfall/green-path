@@ -1,46 +1,38 @@
 <form [formGroup]="companyInfoFormGroup" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="companyName">Company Name:</label>
+    <mat-form-field class="flex flex-col gap-1 w-full" appearance="outline">
+        <mat-label for="companyName">Company Name</mat-label>
         <input
+            matInput
             id="companyName"
             type="text"
             formControlName="companyName"
             aria-describedby="companyNameError"
             [attr.aria-invalid]="companyInfoFormGroup.get('companyName')?.invalid"
-            [ngClass]="{
-                'border-2 border-red-500': companyInfoFormGroup.get('companyName')?.invalid && companyInfoFormGroup.get('companyName')?.touched,
-            }"
         >
-        @if (companyInfoFormGroup.get('companyName')?.invalid &&
-            companyInfoFormGroup.get('companyName')?.touched &&
+        @if (companyInfoFormGroup.get('companyName')?.touched &&
             companyInfoFormGroup.get('companyName')?.errors?.['required']
         ) {            
-            <span class="font-light text-red-500">Company name is required.</span>
+            <mat-error class="text-red-500">Company name is required.</mat-error>
         }
-    </div>
+    </mat-form-field>
 
-    <div>
-        <label for="vatNumber">VAT Number</label>
+    <mat-form-field class="flex flex-col gap-1 w-full" appearance="outline">
+        <mat-label for="vatNumber">VAT Number</mat-label>
         <input 
+            matInput
             id="vatNumber" 
             type="text" 
             formControlName="vatNumber"
             aria-describedby="vatNumberError"
-            [attr.aria-invalid]="companyInfoFormGroup.get('vatNumber')?.invalid && companyInfoFormGroup.get('vatNumber')?.touched"
-            [ngClass]="{
-                'border-red-500': companyInfoFormGroup.get('companyName')?.invalid,
-            }"
-            class="border-2"
+            [attr.aria-invalid]="companyInfoFormGroup.get('vatNumber')?.invalid"
         >
-        @if (companyInfoFormGroup.get('vatNumber')?.invalid &&
+        @if (
             companyInfoFormGroup.get('vatNumber')?.touched &&
             companyInfoFormGroup.get('vatNumber')?.errors?.['required']
         ) {            
-            <span class="font-light text-red-500">VAT number is required.</span>
+            <mat-error class="text-red-500">VAT number is required.</mat-error>
         }
-    </div>
-
-    <!--todo: two required selects for industry and company size -->
-
-    <button type="submit" [disabled]="companyInfoFormGroup.invalid">Next</button>
+    </mat-form-field>
+    <!--todo: two required selects for industry and company size, and other company fields -->
+    
 </form>
