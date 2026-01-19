@@ -32,7 +32,10 @@
         ) {            
             <mat-error class="text-red-500">VAT number is required.</mat-error>
         }
+        @if(companyInfoFormGroup.get('vatNumber')?.hasError('euVatInvalid')) {
+            <mat-error class="text-red-500">Please enter a valid EU VAT number.</mat-error>
+        }
     </mat-form-field>
     <!--todo: two required selects for industry and company size, and other company fields -->
-    
+
 </form>
