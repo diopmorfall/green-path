@@ -1,5 +1,5 @@
 <form [formGroup]="companyInfoFormGroup" (ngSubmit)="onSubmit()">
-    <mat-form-field class="flex flex-col gap-1 w-full" appearance="outline">
+    <mat-form-field appearance="outline">
         <mat-label for="companyName">Company Name</mat-label>
         <input
             matInput
@@ -16,7 +16,7 @@
         }
     </mat-form-field>
 
-    <mat-form-field class="flex flex-col gap-1 w-full" appearance="outline">
+    <mat-form-field appearance="outline">
         <mat-label for="vatNumber">VAT Number</mat-label>
         <input 
             matInput
@@ -37,5 +37,27 @@
         }
     </mat-form-field>
     <!--todo: two required selects for industry and company size, and other company fields -->
+    <mat-form-field>
+        <mat-label>Business model</mat-label>
+        <mat-select formControlName="companyBusinessModel">
+            @for (model of companyBusinessModels; track model) {
+                <mat-option [value]="model">{{model}}</mat-option>
+            }
+        </mat-select>
+        @if (companyInfoFormGroup.get('companyBusinessModel')?.invalid) {
+            <mat-error>Please choose your business model</mat-error>
+        }
+    </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>Company size</mat-label>
+        <mat-select formControlName="companyBusinessModel">
+            @for (model of companySizes; track model) {
+                <mat-option [value]="model">{{model}}</mat-option>
+            }
+        </mat-select>
+        @if (companyInfoFormGroup.get('companySizes')?.invalid) {
+            <mat-error>Please choose your company size.</mat-error>
+        }
+    </mat-form-field>
 </form>

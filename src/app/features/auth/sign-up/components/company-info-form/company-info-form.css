@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+mat-form-field{
+    @apply flex flex-col gap-1 w-full;
+}
