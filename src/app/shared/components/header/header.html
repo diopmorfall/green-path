@@ -1,5 +1,4 @@
-<header class="w-full h-[8vh] bg-white p-4 md:p-8 flex-row justify-around shadow-md fixed top-0 left-0 right-0 z-10">
-    <div class="container h-full mx-auto flex items-center justify-between px-3 md:px-0">
+<header class="w-full h-[8vh] bg-white p-4 md:p-8 flex flex-row justify-around shadow-md fixed top-0 left-0 right-0 z-10">    <div class="container h-full mx-auto flex items-center justify-between px-3 md:px-0">
         <div class="flex items-center">
             <!--todo <img src="assets/images/greenpath-logo.svg" alt="GreenPath Logo" class="mr-2 h-10"/> -->
             <h2 class="text-2xl font-bold text-green-500 cursor-pointer"
@@ -9,7 +8,7 @@
         <nav [ngClass]="{
                 'hidden': isMobileView && !isMobileMenuOpen,
                 'flex-row w-3/4 justify-around': !isMobileView,
-                'flex-col justify-center py-5 absolute left-0 top-[7vh] w-full h-[50vh] space-y-5 text-xl z-20': isMobileView
+                'flex-col justify-center py-5 absolute left-0 top-[8vh] w-full h-[50vh] space-y-5 text-xl z-20': isMobileView
             }"
             class="flex items-center bg-white"
         >
