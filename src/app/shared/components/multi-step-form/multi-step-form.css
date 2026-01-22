@@ -5,11 +5,11 @@
 }
 
 .active-step{
-    @apply bg-green-500 text-white font-bold text-lg border-4 border-green-200;
+    @apply bg-green-500 text-white font-bold text-lg;
 }
 
 .unreached-step{
-    @apply bg-gray-300 text-gray-500 font-bold text-lg;
+    @apply bg-white text-green-500 border-2 border-green-500 font-bold text-lg;
 }
 
 .step-title{
