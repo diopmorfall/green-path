@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './multi-step-form.html',
-    styleUrl: './multi-step-form.css',
+    styleUrls: ['./multi-step-form.css'],
     host: {
         class: 'w-full md:w-3/4 lg:w-3/5 block'
     }
@@ -25,6 +25,7 @@ export class MultiStepForm implements OnDestroy, AfterViewInit {
     @ViewChild('formStepHost', { static: false, read: ViewContainerRef }) formStepHost!: ViewContainerRef;
     
     ngAfterViewInit(): void {
+        if (this.formStepsComponents.length === 0) return;
         this.loadStepComponent(this.currentStepIndex);
     }
 

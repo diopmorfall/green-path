@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
     standalone: true,
     imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule],
     templateUrl: './company-info-form.html',
-    styleUrl: './company-info-form.css',
+    styleUrls: ['./company-info-form.css'],
 })
 export class CompanyInfoForm {
     @Output() formCompleted = new EventEmitter<any>(); //! change this with a proper interface
