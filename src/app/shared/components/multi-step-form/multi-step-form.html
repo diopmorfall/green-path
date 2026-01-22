@@ -35,7 +35,7 @@
             <img src="assets/icons/right-icon.svg" class="multistep-button-icon white-filter">
         </button>
         @if(currentStepIndex === formStepsLabels.length - 1) {
-            <button class="multistep-button bg-green-500 text-white ml-auto"
+            <button type="button" class="multistep-button bg-green-500 text-white ml-auto"
                 (click)="formSubmitted.emit()"
             >
                 <span>Complete</span>
